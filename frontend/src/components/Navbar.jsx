@@ -1,9 +1,12 @@
 import { formateador } from "../utils/formateador";
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 function Navbar() {
-  const total = 25000;
+  // const total = 25000;
   // const token = false;
+  const { calculateTotal } = useCart(); // Obtener la función para calcular el total
+  const total = calculateTotal(); // Calcular el total
 
   return (
     <>

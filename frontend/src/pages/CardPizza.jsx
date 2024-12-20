@@ -1,6 +1,13 @@
 import { formateador } from "../utils/formateador";
+import { useCart } from "../context/CartContext";
 
 function CardPizza({ pizza }) {
+  const { addToCart } = useCart(); // Obtener la función para agregar al carrito
+
+  const handleAddToCart = () => {
+    addToCart(pizza); // Llamar a la función para agregar la pizza al carrito
+  };
+
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white border-gray-300 border-2 m-2 p-2">
       <img className="w-full" src={pizza.img} alt="pizza" />
@@ -22,7 +29,10 @@ function CardPizza({ pizza }) {
         <button className="bg-white text-black py-2 px-4 rounded border-black border-2">
           Ver más 👀
         </button>
-        <button className="bg-black text-white py-2 px-4 rounded">
+        <button
+          onClick={handleAddToCart}
+          className="bg-black text-white py-2 px-4 rounded"
+        >
           Añadir 🛒
         </button>
       </div>
